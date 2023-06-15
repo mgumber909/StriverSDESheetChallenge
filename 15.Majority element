@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+
+int findMajorityElement(int arr[], int n) {
+	//moore's voting algorithm
+	int count=0,element;
+	for(int i=0;i<n;i++){
+		if(count==0) {
+			element = arr[i];
+			count++;
+		}
+		else if(element==arr[i]){
+			count++;
+		}
+		else{
+			count--;
+		}
+	}
+	count=0;
+	for(int i=0;i<n;i++){
+		if(arr[i]==element) count++;
+	}
+	return (count > (n/2))? element :-1;
+}
